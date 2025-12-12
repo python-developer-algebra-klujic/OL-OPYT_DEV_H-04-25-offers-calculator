@@ -7,7 +7,10 @@ class HomePage(TemplateView):
 
 
 # About us
-
+class AboutUsPage(TemplateView):
+    template_name = 'pages/about.html'
 
 
 # Contact us
+class ContactUsPage(TemplateView):
+    template_name = 'pages/contact.html'
