@@ -12,7 +12,8 @@
         <div class="col-md-4 d-flex justify-content-end">
             <a class="btn btn-success mb-4 mr-1" href="{% url 'products:ingredient_create' %}" role="button">Add</a>
             <a class="btn btn-info mb-4 mr-1" href="{% url 'products:ingredient_update' ingredient.id %}" role="button">Update</a>
-            <a class="btn btn-info mb-4" href="{% url 'products:ingredient_list' %}" role="button">Back</a>
+            <a class="btn btn-danger mb-4 mr-3" href="{% url 'products:ingredient_delete' ingredient.id %}" role="button">Delete</a>
+            <a class="btn btn-outline-info mb-4" href="{% url 'products:ingredient_list' %}" role="button">Back</a>
         </div>
     </div>
     <div class="col-md-12">
