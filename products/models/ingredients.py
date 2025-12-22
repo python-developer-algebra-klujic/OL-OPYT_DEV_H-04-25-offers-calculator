@@ -44,10 +44,7 @@ class Ingredient(models.Model):
         ordering = ['name', 'code']
 
     def calculate_total_price(self):
-        print(Decimal(self.base_price))
-        print(Decimal(self.price_modificator))
         self.total_price = Decimal(self.base_price) * Decimal(self.price_modificator)
-        print(self.total_price)
 
     def save(self, *args, **kwargs):
         self.calculate_total_price()

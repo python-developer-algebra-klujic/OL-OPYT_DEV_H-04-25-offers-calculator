@@ -4,7 +4,13 @@ from .views import (IngredientDetailView,
                     IngredientListView,
                     IngredientCreateView,
                     IngredientUpdateView,
-                    IngredientDeleteView)
+                    IngredientDeleteView,
+
+                    ProductDetailView,
+                    ProductListView,
+                    ProductCreateView,
+                    ProductUpdateView,
+                    ProductDeleteView)
 
 
 urlpatterns = [
@@ -14,9 +20,9 @@ urlpatterns = [
     path('ingredients/update/<int:pk>', IngredientUpdateView.as_view(), name='ingredient_update'),
     path('ingredients/delete/<int:pk>', IngredientDeleteView.as_view(), name='ingredient_delete'),
 
-    # path('books/', BookListView.as_view(), name='book_list'),
-    # path('books/<int:pk>/', BookDetailView.as_view(), name='book_details'),
-
-    # path('authors/', AuthorListView.as_view(), name='author_list'),
-    # path('authors/<int:pk>/', AuthorDetailView.as_view(), name='author_details')
+    path('products/', ProductListView.as_view(), name='product_list'),
+    path('products/<int:pk>/', ProductDetailView.as_view(), name='product_details'),
+    path('products/create', ProductCreateView.as_view(), name='product_create'),
+    path('products/update/<int:pk>', ProductUpdateView.as_view(), name='product_update'),
+    path('products/delete/<int:pk>', ProductDeleteView.as_view(), name='product_delete'),
 ]

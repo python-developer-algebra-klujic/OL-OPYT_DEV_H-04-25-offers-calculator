@@ -1,0 +1,67 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block page_title%}Products{% endblock page_title %}
+
+{% block page_content %}
+<!-- Page Heading -->
+<div class="d-flex flex-row align-items-center justify-content-between mb-4">
+	<div>
+		<h1 class="h3 mb-0 text-gray-800">Products list</h1>
+	</div>
+	<div>
+		<a
+			class="btn btn-outline-primary"
+			href="{% url 'products:product_create' %}"
+			>Add product</a
+		>
+	</div>
+</div>
+
+<div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Naziv</th>
+				<th scope="col">Šifra</th>
+				<th scope="col">Cijena (€)</th>
+				<th scope="col">Akcije</th>
+			</tr>
+		</thead>
+		<tbody>
+            {% for product in products %}
+            <tr>
+				<th scope="row">
+                    <a href="{% url 'products:product_details' product.pk %}" class="fs-3 text-decoration-none">
+                        {{ product.name }}
+                    </a>
+
+                </th>
+				<td>{{ product.code }}</td>
+				<td>{{ product.total_price | floatformat:2 }} €</td>
+				<td>
+                    <a href="{% url 'products:product_details' product.pk %}" class="fs-3 text-decoration-none">
+                        <i class="bi bi-info-square text-info"></i>
+                    </a>
+                    <a href="{% url 'products:product_update' product.pk %}" class="fs-3 text-decoration-none">
+                        <i class="bi bi-pencil-square text-success"></i>
+                    </a>
+                    <a href="{% url 'products:product_delete' product.pk %}" class="fs-3 text-decoration-none">
+                        <i class="bi bi-x-square text-danger"></i>
+                    </a>
+                </td>
+			</tr>
+            {% empty %}
+            <tr>
+				<th></th>
+				<td></td>
+				<td></td>
+				<td>Actions</td>
+			</tr>
+            {% endfor %}
+
+		</tbody>
+	</table>
+
+</div>
+
+{% endblock page_content %}

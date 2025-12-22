@@ -3,3 +3,9 @@ from .ingredient_views import (IngredientListView,
                                IngredientCreateView,
                                IngredientUpdateView,
                                IngredientDeleteView)
+
+from .product_views import (ProductListView,
+                            ProductDetailView,
+                            ProductCreateView,
+                            ProductUpdateView,
+                            ProductDeleteView)
