@@ -42,10 +42,10 @@
                     <a href="{% url 'products:ingredient_details' ingredient.pk %}" class="fs-3 text-decoration-none">
                         <i class="bi bi-info-square text-info"></i>
                     </a>
-                    <a href="{% url 'products:ingredient_create' %}" class="fs-3 text-decoration-none">
+                    <a href="{% url 'products:ingredient_update' ingredient.pk %}" class="fs-3 text-decoration-none">
                         <i class="bi bi-pencil-square text-success"></i>
                     </a>
-                    <a href="#" class="fs-3 text-decoration-none">
+                    <a href="{% url 'products:ingredient_delete' ingredient.pk %}" class="fs-3 text-decoration-none">
                         <i class="bi bi-x-square text-danger"></i>
                     </a>
                 </td>
