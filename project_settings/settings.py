@@ -107,7 +107,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'account.User'
-
+# Preusmeri kornisnika na ovu adresu nakon uspjesne prijave u sustav
+LOGIN_REDIRECT_URL = 'pages:dashboard'
+LOGIN_URL = 'accounts:login'
+LOGOUT_URL = 'accounts:logout'
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
