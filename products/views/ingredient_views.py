@@ -4,11 +4,11 @@ from django.views.generic import (ListView,
                                   CreateView,
                                   UpdateView,
                                   DeleteView)
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from products.models import Ingredient
 
 
-class IngredientListView(ListView):
+class IngredientListView(LoginRequiredMixin, ListView):
     model = Ingredient
     context_object_name = 'ingredients'
 
