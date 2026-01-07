@@ -4,27 +4,27 @@ from django.views.generic import (ListView,
                                   CreateView,
                                   UpdateView,
                                   DeleteView)
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from products.models import Product
 
 
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     context_object_name = 'products'
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     fields = '__all__'
 
     success_url = reverse_lazy('products:product_list')
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     fields = '__all__'
     template_name_suffix = '_update_form'
@@ -32,7 +32,7 @@ class ProductUpdateView(UpdateView):
     success_url = reverse_lazy('products:product_list')
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
 
     success_url = reverse_lazy('products:product_list')

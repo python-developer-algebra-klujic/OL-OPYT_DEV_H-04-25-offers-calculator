@@ -13,18 +13,18 @@ class IngredientListView(LoginRequiredMixin, ListView):
     context_object_name = 'ingredients'
 
 
-class IngredientDetailView(DetailView):
+class IngredientDetailView(LoginRequiredMixin, DetailView):
     model = Ingredient
 
 
-class IngredientCreateView(CreateView):
+class IngredientCreateView(LoginRequiredMixin, CreateView):
     model = Ingredient
     fields = '__all__'
 
     success_url = reverse_lazy('products:ingredient_list')
 
 
-class IngredientUpdateView(UpdateView):
+class IngredientUpdateView(LoginRequiredMixin, UpdateView):
     model = Ingredient
     fields = '__all__'
     template_name_suffix = '_update_form'
@@ -32,7 +32,7 @@ class IngredientUpdateView(UpdateView):
     success_url = reverse_lazy('products:ingredient_list')
 
 
-class IngredientDeleteView(DeleteView):
+class IngredientDeleteView(LoginRequiredMixin, DeleteView):
     model = Ingredient
 
     success_url = reverse_lazy('products:ingredient_list')

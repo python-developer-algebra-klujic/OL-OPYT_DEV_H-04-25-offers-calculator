@@ -5,6 +5,7 @@ from django.views.generic import (ListView,
                                   DeleteView)
 from django.contrib.auth.views import LogoutView, LoginView
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django import forms
 from django.utils.translation import gettext_lazy
 
@@ -12,7 +13,7 @@ from .models import User
 
 
 # List
-class UserListView(ListView):
+class UserListView(LoginRequiredMixin, ListView):
     model = User
     paginate_by = 10
     template_name = 'account/user_list.html'
@@ -38,7 +39,7 @@ class UserCreateForm(UserCreationForm):
                   'description', 'job_position', 'is_active', 'is_staff', 'is_superuser')
 
 
-class UserCreateView(CreateView):
+class UserCreateView(LoginRequiredMixin, CreateView):
     form_class = UserCreateForm
     template_name = 'account/user_form.html'
     success_url = reverse_lazy('accounts:users')
@@ -61,14 +62,14 @@ class UserUpdateForm(UserChangeForm):
                   'new_password')
 
 
-class UserUpdateView(UpdateView):
+class UserUpdateView(LoginRequiredMixin, UpdateView):
     form_class = UserUpdateForm
     template_name = 'account/user_form.html'
     success_url = reverse_lazy('accounts:users')
 
 
 # Delete
-class UserDeleteView(DeleteView):
+class UserDeleteView(LoginRequiredMixin, DeleteView):
     model = User
     template_name = 'account/user_confirm_delete.html'
     success_url = reverse_lazy('accounts:users')
@@ -81,4 +82,6 @@ class CustomLoginView(LoginView):
 
 # Logout view
 class CustomLogoutView(LogoutView):
+    template_name = 'account/logout.html'
     next_page = reverse_lazy('pages:index')
+    http_method_names = ['get', "post", "options"]
