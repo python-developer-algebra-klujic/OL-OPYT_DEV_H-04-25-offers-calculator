@@ -17,22 +17,26 @@
         <div class="row">
             <!-- Earnings (Total Offers) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-                {% total_planed_earnings %}
+                {% comment %} {% total_planed_earnings %} {% endcomment %}
+                {% include 'pages/dashboard/total_planned_earnings.html' %}
             </div>
          
             <!-- Earnings (Total Invoices) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-                {% total_earnings %}
+                {% comment %} {% total_earnings %} {% endcomment %}
+                {% include "pages/dashboard/total_earnings.html" %}
             </div>
          
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-                {% paid_earnings %}
+                {% comment %} {% paid_earnings %} {% endcomment %}
+                {% include "pages/dashboard/paid_earnings.html" %}
             </div>
         
             <!-- Pending Requests Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-                {% total_canceled_failed_offers %}
+                {% comment %} {% total_canceled_failed_offers %} {% endcomment %}
+                {% include "pages/dashboard/canceled_failed_offers.html" %}
             </div>
         </div>
         
